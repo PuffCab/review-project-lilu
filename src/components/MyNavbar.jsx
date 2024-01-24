@@ -19,7 +19,7 @@ function MyNavbar() {
       <div className="flex items-center justify-between">
         <div className="flex items-center">
           <div className="mr-4">
-            <img src={logo} alt="Logo" className="w-10 h-10" />
+            <img src={logo} alt="logo" className="w-10 h-10" />
           </div>
           <Link href="/" className="text-white hover:underline mr-4">
             Home
@@ -36,7 +36,6 @@ function MyNavbar() {
             className="text-white focus:outline-none"
           >
             <svg
-              xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
               fill="none"
               viewBox="0 0 24 24"

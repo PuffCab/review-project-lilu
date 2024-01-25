@@ -92,8 +92,8 @@ function MyNavbar() {
 
       {/* Desktop Menu */}
       <div className="hidden md:flex items-center ml-auto">
-        <Link href="/hospitals" className="text-white hover:underline mr-4">
-          Hospitals
+        <Link href="/map" className="text-white hover:underline mr-4">
+          Map
         </Link>
         <Link href="/midwifes" className="text-white hover:underline mr-4">
           Midwifes

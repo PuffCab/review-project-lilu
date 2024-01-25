@@ -1,6 +1,8 @@
 import { Inter } from "next/font/google";
 import Head from "next/head";
 import { useEffect, useState } from "react";
+import BabyImage from "@/images/BabyImage.jpg";
+import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -36,37 +38,8 @@ function Home() {
         console.log("Location data not found in the API response.");
       }
     }
-
-    //!initialize Leaflet map
-    const map = L.map("map").setView([51.505, -0.09], 13);
-    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 19,
-      attribution:
-        '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-    }).addTo(map);
-    const marker = L.marker([51.5, -0.09]).addTo(map);
-    const circle = L.circle([51.508, -0.11], {
-      color: "red",
-      fillColor: "#f03",
-      fillOpacity: 0.5,
-      radius: 500,
-    }).addTo(map);
-    const polygon = L.polygon([
-      [51.509, -0.08],
-      [51.503, -0.06],
-      [51.51, -0.047],
-    ]).addTo(map);
-    marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
-    circle.bindPopup("I am a circle.");
-    polygon.bindPopup("I am a polygon.");
-
     getLocation();
-
-    //!cleanup-function
-    return () => {
-      map.remove();
-    };
-  }, []);
+  });
 
   return (
     <>
@@ -102,14 +75,45 @@ function Home() {
               <span className="font-semibold">Longitude:</span> {longitude}
             </p>
             <p>
-              <span className="font-semibold">Your Location:</span>{" "}
+              <span className="font-semibold">Your Location:</span>
               {locationData.city}
             </p>
           </div>
         )}
-        {/* map container */}
-        <div id="map" className="h-96">
-          map:
+        <div className="bg-red-50 p-8">
+          <h1 className="text-3xl font-semibold mb-4">
+            Welcome to LiLu - Your Trusted Pregnancy Companion
+          </h1>
+
+          <Image src={BabyImage} alt="My Image" />
+
+          <p className="text-lg">
+            Whether you're an expecting parent or a caregiver, LiLu is here to
+            support you on your journey. We're like your virtual midwife,
+            providing guidance and resources every step of the way.
+          </p>
+          <p className="text-lg mt-4">Here's what you can do with LiLu:</p>
+          <ul className="list-disc list-inside text-lg mt-2">
+            <li>
+              Find the nearest hospitals and midwives -{" "}
+              <a href="/map" className="text-blue-500 underline">
+                Explore Maps
+              </a>
+            </li>
+            <li>
+              Get your pregnancy questions answered by approved midwives -{" "}
+              <a href="/questions" className="text-blue-500 underline">
+                Ask Questions
+              </a>
+            </li>
+            <li>
+              Access best practice tips from our expert midwifery and doctors
+              team -{" "}
+              <a href="/tips" className="text-blue-500 underline">
+                Browse Tips
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </>

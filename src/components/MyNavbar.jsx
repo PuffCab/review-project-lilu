@@ -91,25 +91,19 @@ function MyNavbar() {
       )}
 
       {/* Desktop Menu */}
-      <div className="hidden md:flex items-center">
+      <div className="hidden md:flex items-center ml-auto">
         <Link href="/hospitals" className="text-white hover:underline mr-4">
           Hospitals
         </Link>
-        <Link href="/map" className="text-white hover:underline mr-4">
-          Map
+        <Link href="/midwifes" className="text-white hover:underline mr-4">
+          Midwifes
         </Link>
-        {isLoggedIn ? (
-          <div className="text-white">
-            <p className="mr-2">Welcome, User!</p>
-            <button onClick={logout} className="hover:underline">
-              Logout
-            </button>
-          </div>
-        ) : (
-          <Link href="/login" className="text-white hover:underline">
-            Login
-          </Link>
-        )}
+        <Link href="/login" className="text-white hover:underline mr-3">
+          Login
+        </Link>
+        <Link href="/signup" className="text-white hover:underline mr-3">
+          Sign Up
+        </Link>
       </div>
     </div>
   );

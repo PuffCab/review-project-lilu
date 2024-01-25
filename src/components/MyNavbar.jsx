@@ -72,6 +72,12 @@ function MyNavbar() {
           <Link href="/map" className="block text-white hover:underline my-2">
             Map
           </Link>
+          <Link
+            href="/alternativemap"
+            className="block text-white hover:underline my-2"
+          >
+            Alternative-Map
+          </Link>
           {isLoggedIn ? (
             <button
               onClick={logout}
@@ -94,6 +100,9 @@ function MyNavbar() {
       <div className="hidden md:flex items-center ml-auto">
         <Link href="/map" className="text-white hover:underline mr-4">
           Map
+        </Link>
+        <Link href="/map" className="text-white hover:underline mr-4">
+          Alternative-Map
         </Link>
         <Link href="/midwifes" className="text-white hover:underline mr-4">
           Midwifes

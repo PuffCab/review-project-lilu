@@ -7,40 +7,6 @@ import Image from "next/image";
 const inter = Inter({ subsets: ["latin"] });
 
 function Home() {
-  const [latitude, setLatitude] = useState(null);
-  const [longitude, setLongitude] = useState(null);
-  const [locationData, setLocationData] = useState(null);
-
-  useEffect(() => {
-    function getLocation() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-      } else {
-        console.log("Geolocation not supported");
-      }
-    }
-
-    async function showPosition(position) {
-      const { latitude, longitude } = position.coords;
-      setLatitude(latitude);
-      setLongitude(longitude);
-
-      const response = await fetch(
-        `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`
-      );
-      const result = await response.json();
-      console.log("Result: ", result);
-
-      if (result) {
-        setLocationData(result);
-        console.log("Location data:", result);
-      } else {
-        console.log("Location data not found in the API response.");
-      }
-    }
-    getLocation();
-  });
-
   return (
     <>
       <Head>

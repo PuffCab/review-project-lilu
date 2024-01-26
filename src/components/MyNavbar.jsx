@@ -95,8 +95,8 @@ function MyNavbar() {
         <Link href="/map" className="text-white hover:underline mr-4">
           Map
         </Link>
-        <Link href="/midwifes" className="text-white hover:underline mr-4">
-          Midwifes
+        <Link href="/tips" className="text-white hover:underline mr-4">
+          Tips
         </Link>
         <Link href="/login" className="text-white hover:underline mr-3">
           Login

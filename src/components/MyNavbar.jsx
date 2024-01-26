@@ -69,8 +69,14 @@ function MyNavbar() {
           >
             Hospitals
           </Link>
-          <Link href="/map" className="block text-white hover:underline my-2">
+          {/* <Link href="/map" className="block text-white hover:underline my-2">
             Map
+          </Link> */}
+          <Link
+            href="/alternativemap"
+            className="block text-white hover:underline my-2"
+          >
+            Alternative-Map
           </Link>
           {isLoggedIn ? (
             <button
@@ -92,17 +98,26 @@ function MyNavbar() {
 
       {/* Desktop Menu */}
       <div className="hidden md:flex items-center ml-auto">
-        <Link href="/map" className="text-white hover:underline mr-4">
+        {/* <Link href="/map" className="text-white hover:underline mr-4">
           Map
+        </Link> */}
+        <Link href="/map" className="text-white hover:underline mr-4">
+          Alternative-Map
         </Link>
-        <Link href="/tips" className="text-white hover:underline mr-4">
-          Tips
+        <Link href="/midwifes" className="text-white hover:underline mr-4">
+          Midwifes
         </Link>
         <Link href="/login" className="text-white hover:underline mr-3">
           Login
         </Link>
         <Link href="/signup" className="text-white hover:underline mr-3">
           Sign Up
+        </Link>
+        <Link
+          href="/authentication/profile"
+          className="text-white hover:underline mr-3"
+        >
+          Profile
         </Link>
       </div>
     </div>

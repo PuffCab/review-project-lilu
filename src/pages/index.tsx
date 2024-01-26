@@ -7,6 +7,40 @@ import Image from "next/image";
 const inter = Inter({ subsets: ["latin"] });
 
 function Home() {
+  // const [latitude, setLatitude] = useState(null);
+  // const [longitude, setLongitude] = useState(null);
+  // const [locationData, setLocationData] = useState(null);
+
+  // useEffect(() => {
+  //   function getLocation() {
+  //     if (navigator.geolocation) {
+  //       navigator.geolocation.getCurrentPosition(showPosition);
+  //     } else {
+  //       console.log("Geolocation not supported");
+  //     }
+  //   }
+
+  //   async function showPosition(position) {
+  //     const { latitude, longitude } = position.coords;
+  //     setLatitude(latitude);
+  //     setLongitude(longitude);
+
+  //     const response = await fetch(
+  //       `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`
+  //     );
+  //     const result = await response.json();
+  //     console.log("Result: ", result);
+
+  //     if (result) {
+  //       setLocationData(result);
+  //       console.log("Location data:", result);
+  //     } else {
+  //       console.log("Location data not found in the API response.");
+  //     }
+  //   }
+  //   getLocation();
+  // }, []);
+
   return (
     <>
       <Head>
@@ -32,26 +66,9 @@ function Home() {
         <h1 className="text-3xl font-semibold mb-4">
           LiLu - Your Virtual Midwife
         </h1>
-        {latitude && longitude && locationData && (
-          <div className="text-lg">
-            <p>
-              <span className="font-semibold">Latitude:</span> {latitude}
-            </p>
-            <p>
-              <span className="font-semibold">Longitude:</span> {longitude}
-            </p>
-            <p>
-              <span className="font-semibold">Your Location:</span>
-              {locationData.city}
-            </p>
-          </div>
-        )}
-        <div className="bg-red-50 p-8">
-          <h1 className="text-3xl font-semibold mb-4">
-            Welcome to LiLu - Your Trusted Pregnancy Companion
-          </h1>
 
-          <Image src={BabyImage} alt="My Image" />
+        <div className="bg-red-50 50 p-8">
+          <Image src={BabyImage} alt="My Image" className="rounded-full" />
 
           <p className="text-lg">
             Whether you're an expecting parent or a caregiver, LiLu is here to

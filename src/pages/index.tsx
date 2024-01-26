@@ -7,9 +7,9 @@ import Image from "next/image";
 const inter = Inter({ subsets: ["latin"] });
 
 function Home() {
-  // const [latitude, setLatitude] = useState(null);
-  // const [longitude, setLongitude] = useState(null);
-  // const [locationData, setLocationData] = useState(null);
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
+  const [locationData, setLocationData] = useState(null);
 
   // useEffect(() => {
   //   function getLocation() {

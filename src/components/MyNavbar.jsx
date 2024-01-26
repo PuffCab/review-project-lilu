@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import logo from "@/images/logo.jpg";
+import Image from "next/image";
 
 function MyNavbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -19,7 +20,7 @@ function MyNavbar() {
       <div className="flex items-center justify-between">
         <div className="flex items-center">
           <div className="mr-4">
-            <img src={logo} alt="logo" className="w-10 h-10" />
+            <Image src={logo} alt="logo" className="w-10 h-10" />
           </div>
           <Link href="/" className="text-white hover:underline mr-4">
             Home

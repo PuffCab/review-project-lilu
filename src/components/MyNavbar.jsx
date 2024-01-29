@@ -102,7 +102,10 @@ function MyNavbar() {
         {/* <Link href="/map" className="text-white hover:underline mr-4">
           Map
         </Link> */}
-        <Link href="/map" className="text-white hover:underline mr-4">
+        <Link
+          href="/alternativemap"
+          className="text-white hover:underline mr-4"
+        >
           Alternative-Map
         </Link>
         <Link href="/midwifes" className="text-white hover:underline mr-4">

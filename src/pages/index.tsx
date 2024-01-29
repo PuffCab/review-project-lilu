@@ -3,6 +3,7 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import BabyImage from "@/images/BabyImage.jpg";
 import Image from "next/image";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -49,11 +50,11 @@ function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
 
-        <script
+        <Script
           src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
           integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
           crossOrigin=""
-        ></script>
+        ></Script>
       </Head>
       <link
         rel="stylesheet"
@@ -63,7 +64,7 @@ function Home() {
       />
 
       <div className="bg-red-50 p-8">
-        <h1 className="text-3xl font-semibold mb-4">
+        <h1 className="text-3xl font-semibold mb-4 text-center">
           LiLu - Your Virtual Midwife
         </h1>
 

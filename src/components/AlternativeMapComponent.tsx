@@ -71,54 +71,39 @@ export default function AlternativeMap() {
       console.log("Location data not found in the API response.");
     }
   };
-  // // Get the user's actual location using the previous code
-  // useEffect(() => {
-  //   function getLocation() {
-  //     if (navigator.geolocation) {
-  //       navigator.geolocation.getCurrentPosition(showPosition);
-  //     } else {
-  //       console.log("Geolocation not supported");
-  //     }
-  //   }
 
-  //   async function showPosition(position) {
-  //     const { latitude, longitude } = position.coords;
-  //     setLatitude(latitude);
-  //     setLongitude(longitude);
-
-  //     const response = await fetch(
-  //       `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`
-  //     );
-  //     const result = await response.json();
-  //     console.log("Result: ", result);
-
-  //     if (result) {
-  //       setLocationData(result);
-  //       console.log("Location data:", result);
-  //     } else {
-  //       console.log("Location data not found in the API response.");
-  //     }
-  //   }
-  //   getLocation();
-  // }, []);
-
-  const handleAddressChange = (e) => {
-    setAddress(e.target.value);
-  };
-  //converting address to location, using the same api as before
+  //!converting address to location, using the same api as before called reverse geocoding
   const convertAddressToLocation = async () => {
     const fullAddress = `${streetAddress}, ${postalCode} ${city}, ${country}`;
 
+    console.log("Street Address:", streetAddress);
+    console.log("Postal Code:", postalCode);
+    console.log("City:", city);
+    console.log("Country:", country);
+
     if (!isValidAddress(fullAddress)) {
+      console.log("Invalid address:", fullAddress);
+
+      return;
+    }
+    console.log("Converting address to location:", fullAddress);
+
+    if (!streetAddress || !postalCode || !city || !country) {
+      console.error("Please fill in all address fields.");
       return;
     }
 
     try {
+      const fullAddress = `${streetAddress}, ${postalCode} ${city}, ${country}`;
       const formattedAddress = encodeURIComponent(fullAddress);
       const response = await fetch(
         `https://api.bigdatacloud.net/data/reverse-geocode-client?localityLanguage=en&locality=${formattedAddress}`
       );
+      if (!response.ok) {
+        throw new Error(`API request failed with status ${response.status}`);
+      }
       const result = await response.json();
+      console.log("API-Response :>> ", result);
 
       if (result && result.latitude && result.longitude) {
         setLatitude(result.latitude);
@@ -159,18 +144,22 @@ export default function AlternativeMap() {
 
   const handleStreetAddressChange = (e) => {
     setStreetAddress(e.target.value);
+    console.log("streetaddress :>> ", e.target.value);
   };
 
   const handlePostalCodeChange = (e) => {
     setPostalCode(e.target.value);
+    console.log("postcode :>> ", e);
   };
 
   const handleCityChange = (e) => {
     setCity(e.target.value);
+    console.log("city :>> ", e);
   };
 
   const handleCountryChange = (e) => {
     setCountry(e.target.value);
+    console.log("country :>> ", e);
   };
 
   return (
@@ -228,7 +217,7 @@ export default function AlternativeMap() {
       </div>
 
       <MapContainer
-        center={center}
+        center={[latitude, longitude]}
         zoom={12}
         style={{ height: "60vh", width: "80vw" }}
       >

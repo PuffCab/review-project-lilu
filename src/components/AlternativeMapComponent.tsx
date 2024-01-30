@@ -98,8 +98,6 @@ export default function AlternativeMap() {
     try {
       const apiKey = process.env.NEXT_PUBLIC_GEOAPIFY_API_KEY;
 
-      console.log("apiKey :>> ", apiKey);
-
       const response = await fetch(
         `https://api.geoapify.com/v1/geocode/search?housenumber=${address.houseNumber}&street=${address.streetName}&postcode=${address.postalCode}&city=${address.city}&country=${address.country}&format=json&apiKey=${apiKey}`
       );
@@ -125,49 +123,11 @@ export default function AlternativeMap() {
     }
   };
 
-  // const handleLocationClick = () => {
-  //   if (isValidAddress(address)) {
-  //     setLatitude(latitude);
-  //     setLongitude(longitude);
-  //   } else {
-  //     setLatitude(52.52);
-  //     setLongitude(13.405);
-  //   }
-  // };
   const center: LatLngExpression = [
     latitude || 52.52,
     longitude || 13.405,
   ] as LatLngExpression;
   const fillRedOptions = { fillColor: "red" };
-
-  const isValidAddress = (address: string) => {
-    return address.trim() !== "";
-  };
-
-  const [streetAddress, setStreetAddress] = useState("");
-  const [postalCode, setPostalCode] = useState("");
-  const [city, setCity] = useState("");
-  const [country, setCountry] = useState("");
-
-  // const handleStreetAddressChange = (e) => {
-  //   setStreetAddress(e.target.value);
-  //   console.log("streetaddress :>> ", e.target.value);
-  // };
-
-  // const handlePostalCodeChange = (e) => {
-  //   setPostalCode(e.target.value);
-  //   console.log("postcode :>> ", e);
-  // };
-
-  // const handleCityChange = (e) => {
-  //   setCity(e.target.value);
-  //   console.log("city :>> ", e);
-  // };
-
-  // const handleCountryChange = (e) => {
-  //   setCountry(e.target.value);
-  //   console.log("country :>> ", e);
-  // };
 
   return (
     <div className="bg-red-50 p-8">

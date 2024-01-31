@@ -108,8 +108,8 @@ function MyNavbar() {
         >
           Alternative-Map
         </Link>
-        <Link href="/midwifes" className="text-white hover:underline mr-4">
-          Midwifes
+        <Link href="/hospitals" className="text-white hover:underline mr-4">
+          Hospitals
         </Link>
         <Link href="/login" className="text-white hover:underline mr-3">
           Login
@@ -117,12 +117,12 @@ function MyNavbar() {
         <Link href="/signup" className="text-white hover:underline mr-3">
           Sign Up
         </Link>
-        <Link
+        {/* <Link
           href="/authentication/profile"
           className="text-white hover:underline mr-3"
         >
           Profile
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import BabyImage from "@/images/BabyImage.jpg";
 import Image from "next/image";
 import Script from "next/script";
+import dbConnection from "@/utils/dbConnection";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,6 +12,7 @@ function Home() {
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
   const [locationData, setLocationData] = useState(null);
+  console.log("process.env.local.MONGO :>> ", process.env.MONGODB_URI);
 
   return (
     <>

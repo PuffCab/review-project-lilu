@@ -13,10 +13,13 @@ export async function getServerSideProps() {
 
   const hospitals = await HospitalModel.find();
 
-  console.log("hospitals :>> ", hospitals);
+  // console.log("hospitals :>> ", hospitals);
 
+  //REVIEW in order to be able to send it to the client part of the component, we need to "serialize it", basically turns what it comes from mongoDB into a string object (JSON.stringify), and later into a Javascrpit object (JSON.parse)
+  const serializedHospitals = JSON.parse(JSON.stringify(hospitals));
+  // console.log("serializedHospitals :>> ", serializedHospitals);
   // Pass data to the page via props
-  return { props: { hospitals } };
+  return { props: { serializedHospitals } };
 }
 
 function testMongodb() {

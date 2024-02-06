@@ -1,5 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
+//REVIEW do not forget to indicate which fields are required and which not
 const hospitalSchema = new Schema({
   name: {
     type: String,
@@ -25,7 +26,6 @@ const hospitalSchema = new Schema({
   birthsPerYear: Number,
   year: Number,
 });
-
 
 const HospitalModel = mongoose.model("Hospital", hospitalSchema);
 

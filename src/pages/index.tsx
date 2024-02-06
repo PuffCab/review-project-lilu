@@ -5,6 +5,7 @@ import BabyImage from "@/images/BabyImage.jpg";
 import Image from "next/image";
 import Script from "next/script";
 import dbConnection from "@/utils/dbConnection";
+import mongoDBConnect from "../../../lib/mongoDBConnect";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,7 +13,7 @@ function Home() {
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
   const [locationData, setLocationData] = useState(null);
-  console.log("process.env.local.MONGO :>> ", process.env.MONGODB_URI);
+  console.log("process.env.MONGODB_URI :>> ", process.env.MONGODB_URI);
 
   return (
     <>

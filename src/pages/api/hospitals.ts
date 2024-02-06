@@ -28,7 +28,7 @@ import { MongoClient } from "mongodb";
 
 export default async (req, res) => {
   try {
-    const collection = await dbConnection;
+    const collection = await dbConnection();
     const db = collection.db("hospitals");
 
     const hospitals = await db

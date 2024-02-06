@@ -1,8 +1,10 @@
 import mongoose, { Schema } from "mongoose";
 
+//REVIEW do not forget to indicate which fields are required and which not
 const hospitalSchema = new Schema({
   name: {
     type: String,
+    required: true,
   },
   address: {
     streetName: String,
@@ -14,6 +16,7 @@ const hospitalSchema = new Schema({
   location: {
     latitude: Number,
     longitude: Number,
+    
   },
   contact: {
     tel: String,
@@ -25,7 +28,6 @@ const hospitalSchema = new Schema({
   birthsPerYear: Number,
   year: Number,
 });
-
 
 const HospitalModel = mongoose.model("Hospital", hospitalSchema);
 

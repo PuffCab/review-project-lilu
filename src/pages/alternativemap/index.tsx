@@ -20,3 +20,5 @@ export default function Home() {
     </div>
   );
 }
+
+//ANCHOR - SO- I really could pass the location-data from the hosptals to my map-component

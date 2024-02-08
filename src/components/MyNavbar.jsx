@@ -19,9 +19,10 @@ function MyNavbar() {
     <div className="bg-cyan-700 p-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center">
-          <div className="mr-4">
-            <Image src={logo} alt="logo" className="w-10 h-10" />
-          </div>
+          <Link href="/">
+            <Image src={logo} alt="logo" className="w-10 h-10 rounded-full" />
+          </Link>
+
           <Link href="/" className="text-white hover:underline mr-4">
             Home
           </Link>
@@ -99,14 +100,11 @@ function MyNavbar() {
 
       {/* Desktop Menu */}
       <div className="hidden md:flex items-center ml-auto">
-        {/* <Link href="/map" className="text-white hover:underline mr-4">
-          Map
-        </Link> */}
         <Link
           href="/alternativemap"
           className="text-white hover:underline mr-4"
         >
-          Alternative-Map
+          Map
         </Link>
         <Link href="/hospitals" className="text-white hover:underline mr-4">
           Hospitals
@@ -117,12 +115,9 @@ function MyNavbar() {
         <Link href="/signup" className="text-white hover:underline mr-3">
           Sign Up
         </Link>
-        {/* <Link
-          href="/authentication/profile"
-          className="text-white hover:underline mr-3"
-        >
-          Profile
-        </Link> */}
+        <Link href="/contact" className="text-white hover:underline mr-3">
+          Contact
+        </Link>
       </div>
     </div>
   );

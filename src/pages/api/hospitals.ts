@@ -1,45 +1,22 @@
-// import dbConnection from "../../utils/dbConnection";
-// import { MongoClient } from "mongodb";
+import dbConnection from "../../utils/dbConnection";
 
-// async function getHospitals() {
-//   try {
-//     const db = await dbConnection();
-//     // const data = req.body;
-//     // console.log("data :>> ", data);
-//     const collection = await db.collection("hospitals");
-//     console.log("collection :>> ", collection);
-//     const result = await collection.find({}).toArray();
-//     console.log(result);
-//     console.log("Connected to MongoDB. Data from the collection:");
-
-//     return result;
-//   } catch (error) {
-//     console.error("Error connecting to the MongoDB database:", error);
-//     throw error;
-//   }
-// }
-
-// export default getHospitals;
-
-
-
-import { dbConnection } from "../../utils/dbConnection";
-import { MongoClient } from "mongodb";
-
-export default async (req, res) => {
+async function getHospitals(req, res) {
   try {
-    const collection = await dbConnection();
-    const db = collection.db("hospitals");
+    const db = await dbConnection();
+    const collection = await db.collection("hospitals");
+    console.log("collection :>> ", collection);
+    const allHospitals = await collection.find({}).toArray();
 
-    const hospitals = await db
-      .collection("hospitals")
-      .find({})
-      // .sort({ metacritic: -1 })
-      // .limit(10)
-      .toArray();
+    res.status(200).json(allHospitals);
 
-    res.json(hospitals);
-  } catch (e) {
-    console.error(e);
+    console.log("Connected to MongoDB", allHospitals);
+    console.log("Connected to MongoDB. Data from the collection:");
+
+    // return result;
+  } catch (error) {
+    console.error("Error connecting to the MongoDB database:", error);
+    res.status(500).json({ error: "Failed to connect to the database" });
   }
-};
+}
+
+export default getHospitals;

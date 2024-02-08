@@ -1,5 +1,5 @@
 import React from "react";
-import ListOfHospitals from "../components/listOfHospitals";
+import ListOfHospitals from "../components/ListOfHospitals";
 
 function HospitalsPage() {
   return (

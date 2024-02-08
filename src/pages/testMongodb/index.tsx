@@ -1,7 +1,7 @@
 import HospitalModel from "@/models/hospitalModel";
-import dbConnection from "@/utils/dbConnection";
+// import dbConnection from "@/utils/dbConnection";
 import React from "react";
-import mongoDBConnect from "../../../lib/mongoDBConnect";
+import mongoDBConnect from "../../../lib/mongodb";
 
 export async function getServerSideProps() {
   // Fetch data from external API

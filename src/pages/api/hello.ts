@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import HospitalModel from "@/models/hospitalModel";
-import dbConnection from "@/utils/dbConnection";
+// import dbConnection from "@/utils/dbConnection";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 

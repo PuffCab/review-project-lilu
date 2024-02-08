@@ -6,12 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "populate": "node scripts/populateFakeUsers.js"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.18",
     "@heroicons/react": "^2.1.1",
     "dotenv": "^16.4.1",
+    "faker": "^6.6.6",
     "leaflet": "^1.9.4",
     "leaflet-defaulticon-compatibility": "^0.1.2",
     "mongodb": "^6.3.0",
@@ -26,6 +28,7 @@
   },
   "devDependencies": {
     "@types/leaflet": "^1.9.8",
+    "@types/mongodb": "^4.0.7",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

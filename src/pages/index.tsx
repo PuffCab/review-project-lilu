@@ -4,15 +4,10 @@ import { useEffect, useState } from "react";
 import BabyImage from "@/images/BabyImage.jpg";
 import Image from "next/image";
 import Script from "next/script";
-import dbConnection from "@/utils/dbConnection";
-import mongoDBConnect from "../../../lib/mongoDBConnect";
 
 const inter = Inter({ subsets: ["latin"] });
 
 function Home() {
-  const [latitude, setLatitude] = useState(null);
-  const [longitude, setLongitude] = useState(null);
-  const [locationData, setLocationData] = useState(null);
   console.log("process.env.MONGODB_URI :>> ", process.env.MONGODB_URI);
 
   return (
@@ -67,7 +62,7 @@ function Home() {
               Access best practice tips from our expert midwifery and doctors
               team -{" "}
               <a href="/tips" className="text-blue-500 underline">
-                Browse Tips
+                Browse our Tips
               </a>
             </li>
           </ul>

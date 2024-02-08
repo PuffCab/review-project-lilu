@@ -131,74 +131,71 @@ export default function AlternativeMap() {
 
   return (
     <div className="bg-red-50 p-8">
-      <div className="flex flex-col items-center">
-        <div className="mb-4">
-          <input
-            type="text"
-            placeholder="Street Name"
-            name="streetName"
-            value={address.streetName}
-            // onChange={handleStreetAddressChange}
-            onChange={handleAdressChange}
-            className="w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
+      <div className="bg-gray-50 min-h-screen flex items-center justify-center p-4">
+        <div className="bg-white shadow-md rounded-lg p-8 max-w-lg w-full">
+          <h2 className="text-2xl font-bold text-gray-800 mb-6">
+            Enter Address
+          </h2>
+          <div className="space-y-4">
+            <input
+              type="text"
+              placeholder="Street Name"
+              name="streetName"
+              value={address.streetName}
+              onChange={handleAdressChange}
+              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+            <input
+              type="text"
+              placeholder="House Number"
+              name="houseNumber"
+              value={address.houseNumber}
+              onChange={handleAdressChange}
+              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+            <input
+              type="text"
+              placeholder="Postal Code"
+              name="postalCode"
+              value={address.postalCode}
+              onChange={handleAdressChange}
+              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+            <input
+              type="text"
+              placeholder="City"
+              name="city"
+              value={address.city}
+              onChange={handleAdressChange}
+              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+            <input
+              type="text"
+              placeholder="Country"
+              name="country"
+              value={address.country}
+              onChange={handleAdressChange}
+              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+            <div className="flex space-x-4">
+              <button
+                onClick={convertAddressToLocation}
+                className="flex-1 bg-blue-500 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+              >
+                Convert Address
+              </button>
+              <br />
+              <br />
+              <p>or</p>
+              <button
+                onClick={getLocationOnClick}
+                className="flex-1 bg-green-500 text-white font-bold py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+              >
+                Use My Location
+              </button>
+            </div>
+          </div>
         </div>
-        <div className="mb-4">
-          <input
-            type="text"
-            placeholder="House Number"
-            name="houseNumber"
-            value={address.houseNumber}
-            // onChange={handleStreetAddressChange}
-            onChange={handleAdressChange}
-            className="w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
-        </div>
-        <div className="mb-4">
-          <input
-            type="text"
-            placeholder="Postal Code"
-            name="postalCode"
-            value={address.postalCode}
-            // onChange={handlePostalCodeChange}
-            onChange={handleAdressChange}
-            className="w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
-        </div>
-        <div className="mb-4">
-          <input
-            type="text"
-            placeholder="City"
-            value={address.city}
-            name="city"
-            // onChange={handleCityChange}
-            onChange={handleAdressChange}
-            className="w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
-        </div>
-        <div className="mb-4">
-          <input
-            type="text"
-            placeholder="Country"
-            value={address.country}
-            name="country"
-            // onChange={handleCountryChange}
-            onChange={handleAdressChange}
-            className="w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
-        </div>
-        <button
-          onClick={convertAddressToLocation}
-          className="bg-red-500 text-white font-bold py-2 px-4 rounded-lg"
-        >
-          Convert Address
-        </button>
-        <button
-          onClick={getLocationOnClick}
-          className="bg-red-300 text-white font-bold py-2 px-4 rounded-lg"
-        >
-          Use My Location
-        </button>
       </div>
 
       <MapContainer

@@ -14,7 +14,6 @@ export default function Home() {
   // NOTE if you found an API, you could fetch here and get , let's say, an array of coordinates. To be passed as props to the component <AlternativeMap/> below
   return (
     <div>
-      <h1>Another approach to the map</h1>
       {/* //NOTE you could pass the props here below */}
       <AlternativeMap />
     </div>

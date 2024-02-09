@@ -12,6 +12,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.18",
     "@heroicons/react": "^2.1.1",
+    "@nextui-org/react": "^2.2.9",
     "dotenv": "^16.4.1",
     "faker": "^6.6.6",
     "leaflet": "^1.9.4",

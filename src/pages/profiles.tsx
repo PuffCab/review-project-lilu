@@ -40,7 +40,7 @@ const ProfilesPage = () => {
               </a>
             </p>
             <p>Due Date: {formatDate(profile.dueDate)}</p>
-            <p>Baby Born: {profile.babyBorn ? "Yes" : "No"}</p>
+            <p>Baby already Born: {profile.babyBorn ? "Yes" : "No"}</p>
           </div>
         ))}
       </div>

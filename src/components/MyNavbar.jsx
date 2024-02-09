@@ -78,7 +78,7 @@ function MyNavbar() {
             href="/alternativemap"
             className="block text-white hover:underline my-2"
           >
-            Alternative-Map
+            Map
           </Link>
           {isLoggedIn ? (
             <button

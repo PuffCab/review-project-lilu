@@ -248,12 +248,6 @@ export default function AlternativeMap() {
             key={hospital._id}
             position={[hospital.location.latitude, hospital.location.longitude]}
           >
-//      // draggable={true}
-//      // animate={true}
-    >
-      <Popup>...this is a cool place...</Popup>
-    </Marker>
-   <ChangeView coords={center} />
             <Popup>
               <div>
                 <h2>{hospital.name}</h2>

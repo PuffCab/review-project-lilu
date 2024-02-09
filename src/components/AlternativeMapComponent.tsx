@@ -243,6 +243,13 @@ export default function AlternativeMap() {
           radius={100}
           stroke={false}
         />
+        <Marker
+          position={[latitude, longitude]}
+          // draggable={true}
+          // animate={true}
+        >
+          <Popup>...this is a cool place...</Popup>
+        </Marker>
         {hospitals.map((hospital) => (
           <Marker
             key={hospital._id}

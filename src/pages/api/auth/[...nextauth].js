@@ -14,5 +14,3 @@ export default NextAuth({
     // I can add more providers here
   ],
 });
-
-// You'll need to configure environment variables for your providers. For Google, for example, you'll set GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET in your .env.local file.

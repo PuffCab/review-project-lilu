@@ -1,16 +1,39 @@
 import NextAuth from "next-auth";
-import Providers from "next-auth/providers";
+import Credentials from "next-auth/providers/credentials";
 
-export default NextAuth({
+const cookies = {
+  sessionToken: {
+    name: `next-auth.session-token`,
+    options: {
+      httpOnly: true,
+      sameSite: "none",
+      path: "/",
+      domain: "http://localhost:3000",
+      secure: true,
+    },
+  },
+  callbackUrl: {
+    name: `next-auth.callback-url`,
+  },
+  csrfToken: {
+    name: "next-auth.csrf-token",
+  },
+};
+
+export const authOptions = {
   providers: [
-    Providers.Email({
-      server: process.env.EMAIL_SERVER,
-      from: process.env.EMAIL_FROM,
+    Credentials({
+      id: "credentials",
+      name: "credentials",
+      type: "credentials",
+      credentials: {
+        email: { label: "email", type: "text" },
+        password: { label: "password", type: "password" },
+      },
     }),
-    Providers.Google({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    }),
-    // I can add more providers here
   ],
-});
+};
+
+const handler = NextAuth(authOptions);
+
+export default handler;

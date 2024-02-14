@@ -1,8 +1,15 @@
 import React from "react";
 import ListOfHospitals from "../components/ListOfHospitals";
+
+import useCalculateDistanceToHospitals from "../utils/usecalculateDistanceToHospitals";
+
+function HospitalsPage() {
+
+
 import useCalculateDistanceToHospitals from "../utils/useCalculateDistanceToHospitals";
 
 function HospitalsPage() {
+
   //1.7km according to google maps
   // const location1 = [52.47304137480423, 13.425472026026231]
   // const location2 = [52.48656925572065, 13.424486699004747]
@@ -14,6 +21,7 @@ function HospitalsPage() {
   const distance = useCalculateDistanceToHospitals(location1, location2);
 
   console.log("distance final :>> ", distance);
+
 
   return (
     <div>

@@ -1,6 +1,9 @@
+
+
 import dbConnection from "../../utils/dbConnection";
 
 async function getHospitals(req, res) {
+
   try {
     const db = await dbConnection();
     const collection = await db.collection("hospitals");

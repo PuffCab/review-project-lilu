@@ -49,6 +49,9 @@ function MyNavbar() {
           <Link href="/about" className="text-white hover:underline mr-4">
             About
           </Link>
+          <Link href="/contact" className="text-white hover:underline mr-3">
+          Contact
+        </Link>
         </div>
 
         {/* Hamburger menu */}
@@ -101,6 +104,13 @@ function MyNavbar() {
             Map
           </Link>
           {isLoggedIn ? (
+            <>
+            <Link
+            href={`/profile/`}
+            className="mx-1 text-2xl text-white	 no-underline hover:font-semibold focus:font-semibold"
+          >
+            Profile
+          </Link>
             <button
               onClick={() => {
                 logout()
@@ -108,7 +118,7 @@ function MyNavbar() {
               className="block text-white hover:underline my-2"
             >
               Logout
-            </button>
+            </button></>
           ) : (
             <div>
               <Link
@@ -135,14 +145,22 @@ function MyNavbar() {
           Hospitals
         </Link>
         {isLoggedIn ? (
+            <>
+            <Link
+            href={`/profile/${session?.user?.image}`}
+            className="block text-white hover:underline mr-2 my-2"
+
+          >
+            Profile
+          </Link>
             <button
               onClick={() => {
                 logout()
               }}
-              className="block text-white hover:underline my-2 mr -4"
+              className="block text-white hover:underline my-2"
             >
               Logout
-            </button>
+            </button></>
           ) : (
             <div className="flex flex-row"> 
               <Link
@@ -156,9 +174,7 @@ function MyNavbar() {
               href='/signup'>Signup</Link>
                       
             </div>  )} {" "}
-        <Link href="/contact" className="text-white hover:underline mr-3">
-          Contact
-        </Link>
+
       </div>
     </div>
   );

@@ -6,17 +6,21 @@ import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
 function MyNavbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   const {data: session, status, update} = useSession();
   console.log('session :>> ', session);
 
+
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [user, setUser] = useState(session?.user)
+
+
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const router = useRouter
+  const router = useRouter()
 
   useEffect(() => {
-    // console.log('%c status', 'color:purple', status);
+
     if (session?.user) {
       setIsLoggedIn(true);
     } else {
@@ -32,7 +36,7 @@ function MyNavbar() {
     window.confirm('Are you sure you want to log out?');
     await signOut({redirect: false});
     setUser(null);
-    await router.push('../login');
+    await router.push('/');
     location.reload();
   };
 

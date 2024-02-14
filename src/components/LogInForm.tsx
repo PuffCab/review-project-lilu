@@ -53,7 +53,7 @@ function LogInForm() {
               onChange={handleLogInInput}
               placeholder="Password"
               className="w-full mb-4 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              type="text"
+              type="password"
               name="password"
               required
             />

@@ -34,7 +34,7 @@ const Profile = () => {
       <h1 className="text-2xl font-semibold">Your Profile</h1>
       <div>
         <div className="bg-white shadow overflow-hidden rounded-md p-4">
-          <h2 className="text-lg font-bold text-red-400">{profile.name}</h2>
+          <h2 className="text-xl font-bold">{profile.name}</h2>
           <p>
             Email:{" "}
             <a

@@ -9,7 +9,7 @@ const registerNewUser = async (req, res) => {
 
 try {
 
-  const {name, email, password} = req.body;
+  const {name, email, password, dueDate, babyBorn} = req.body;
 
   if (!email || !password){
     res.status(405).json({
@@ -29,6 +29,8 @@ if (hashedPassword) {
       name: name,
       email: email,
       password: hashedPassword,
+      dueDate: dueDate,
+      babyBorn: false,
 
     });
 

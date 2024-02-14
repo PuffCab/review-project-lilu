@@ -8,6 +8,8 @@ const SignUp = () => {
     name: "",
     email: "",
     password: "",
+    dueDate: Date(),
+    babyBorn: false,
   });
 
   const router = useRouter();
@@ -18,19 +20,19 @@ const SignUp = () => {
   const handleRegister = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // const { email, password } = newUser;
-    // if (!email.includes("@") && password.length < 6) {
-    //   alert(
-    //     "Your email seems to be invalid. \n Your password should be at least 6 characters"
-    //   );
-    //   return;
-    // } else if (password.length < 6) {
-    //   alert("Your password should be at least 6 characters");
-    //   return;
-    // } else if (!email.includes("@")) {
-    //   alert("Your email seems to be invalid");
-    //   return;
-    // }
+    const { email, password } = newUser;
+    if (!email.includes("@") && password.length < 6) {
+      alert(
+        "Your email seems to be invalid. \n Your password should be at least 6 characters"
+      );
+      return;
+    } else if (password.length < 6) {
+      alert("Your password should be at least 6 characters");
+      return;
+    } else if (!email.includes("@")) {
+      alert("Your email seems to be invalid");
+      return;
+    }
 
     try {
       const myHeaders = new Headers();
@@ -41,6 +43,7 @@ const SignUp = () => {
       urlencoded.append("name", newUser.name);
       urlencoded.append("email", newUser.email);
       urlencoded.append("password", newUser.password);
+      urlencoded.append("dueDate", newUser.dueDate as string);
 
       const requestOptions = {
         method: "POST",
@@ -56,7 +59,7 @@ const SignUp = () => {
           console.log("result in register:>> ", result);
 
           setNewUser(result);
-          // alert("Thank you for joining Lilu!");
+          alert("Thank you for joining Lilu!");
           // await signIn("credentials", {
           //   ...newUser,
           //   redirect: false,
@@ -85,35 +88,42 @@ const SignUp = () => {
             <input
               onChange={handleRegisterInput}
               placeholder="Name"
-              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full  mb-4  p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               type="text"
               name="name"
             />
 
-            <br />
-            <br />
-
             <input
               onChange={handleRegisterInput}
               placeholder="Email"
-              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full  mb-4  p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               type="text"
               name="email"
               required
             />
 
-            <br />
-            <br />
-
             <input
               placeholder="Password"
               onChange={handleRegisterInput}
-              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full mb-4 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               type="password"
               name="password"
               required
             />
-            <br />
+
+            <div className="flex flex-col ">
+              <label className="mx-2" htmlFor="course_date">
+                When is your due date?
+              </label>
+              <input
+                // value={formatInputDate(userInfo.course_date)}
+                className="shadow-custom mb-6 w-36 rounded-2xl bg-[#EDE9E6] p-2 font-medium"
+                onChange={handleRegisterInput}
+                type="date"
+                name="dueDate"
+              />
+            </div>
+
             <button
               className="flex-1 bg-blue-500 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
               type="submit"

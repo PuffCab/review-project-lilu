@@ -21,13 +21,14 @@ const userSchema = new SchemaU({
   },
   babyBorn: {
     type: Boolean,
+    default: false,
   },
-  // favoriteHospital : [
-  //   {
-  //     type: mongoose.Schema.Types.ObjectId,
-  //     ref: "hospital",
-  //   },
-  // ]
+  favoriteHospital : [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "hospital",
+    },
+  ]
 });
 
 

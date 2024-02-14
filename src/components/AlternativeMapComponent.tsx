@@ -6,12 +6,14 @@ import {
   useMap,
   Popup,
   Circle,
+  CircleMarker,
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import { LatLngExpression } from "leaflet";
 import dotenv from "dotenv";
+import { useMapEvent } from "react-leaflet/hooks";
 
 dotenv.config();
 
@@ -139,6 +141,17 @@ export default function AlternativeMap() {
   ] as LatLngExpression;
   const fillRedOptions = { fillColor: "red" };
 
+  // function TooltipCircle() {
+  // const [clickedCount, setClickedCount] = useState(0)
+  // const eventHandlers = useMemo(
+  //   () => ({
+  //     click() {
+  //       setClickedCount((count) => count + 1)
+  //     },
+  //   }),
+  //   [],
+  // )
+
   useEffect(() => {
     async function fetchHospitals() {
       try {
@@ -226,58 +239,62 @@ export default function AlternativeMap() {
             </div>
           </div>
         </div>
-      </div>
 
-      <MapContainer
-        center={center}
-        zoom={12}
-        style={{ height: "60vh", width: "100%" }}
-      >
-        <TileLayer
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <Circle
-          center={[latitude, longitude]}
-          pathOptions={fillRedOptions}
-          radius={100}
-          stroke={false}
-        />
-        <Marker
-          position={[latitude, longitude]}
-          // draggable={true}
-          // animate={true}
+        <MapContainer
+          center={center}
+          zoom={12}
+          style={{ height: "60vh", width: "100%" }}
         >
-          <Popup>...this is a cool place...</Popup>
-        </Marker>
-        {hospitals.map((hospital) => (
-          <Marker
-            key={hospital._id}
-            position={[hospital.location.latitude, hospital.location.longitude]}
-          >
-            <Popup>
-              <div>
-                <h2>{hospital.name}</h2>
-                <p>{`${hospital.address.streetName} ${hospital.address.houseNumber}, ${hospital.address.postalCode} ${hospital.address.city}, ${hospital.address.district}`}</p>
+          <TileLayer
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
 
-                <p className="text-gray-600">Contact: {hospital.contact.tel}</p>
-                <p>
-                  href={`mailto:${hospital.contact.email}`}
-                  Mail: {hospital.contact.email}
-                </p>
-                <p>Delivery Rooms: {hospital.deliveryRooms}</p>
-                <p>On-call Midwife: {hospital.onCallMidwife ? "Yes" : "No"}</p>
-                <p>
-                  Neonatal Unit Available:{" "}
-                  {hospital.neonatalUnitAvailable ? "Yes" : "No"}
-                </p>
-                <p>Births Per Year: {hospital.birthsPerYear}</p>
-                <p>Year: {hospital.year}</p>
-              </div>
-            </Popup>
-          </Marker>
-        ))}
-      </MapContainer>
+          <Circle
+            position={[latitude, longitude]}
+            center={center}
+            pathOptions={{ fillColor: "red" }}
+            radius={400}
+          >
+            <Popup>you are here!</Popup>
+          </Circle>
+          {hospitals.map((hospital) => (
+            <Marker
+              key={hospital._id}
+              position={[
+                hospital.location.latitude,
+                hospital.location.longitude,
+              ]}
+            >
+              <Popup>
+                <div>
+                  <h2>{hospital.name}</h2>
+                  <p>{`${hospital.address.streetName} ${hospital.address.houseNumber}, ${hospital.address.postalCode} ${hospital.address.city}, ${hospital.address.district}`}</p>
+
+                  <p className="text-gray-600">
+                    Contact: {hospital.contact.tel}
+                  </p>
+                  <p>
+                    href={`mailto:${hospital.contact.email}`}
+                    Mail: {hospital.contact.email}
+                  </p>
+                  <p>Delivery Rooms: {hospital.deliveryRooms}</p>
+                  <p>
+                    On-call Midwife: {hospital.onCallMidwife ? "Yes" : "No"}
+                  </p>
+                  <p>
+                    Neonatal Unit Available:{" "}
+                    {hospital.neonatalUnitAvailable ? "Yes" : "No"}
+                  </p>
+                  <p>Births Per Year: {hospital.birthsPerYear}</p>
+                  <p>Year: {hospital.year}</p>
+                </div>
+              </Popup>
+            </Marker>
+          ))}
+        </MapContainer>
+        <h2>create dropdowns and checkboxes for querying data </h2>
+      </div>
     </div>
   );
 }

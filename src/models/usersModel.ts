@@ -5,16 +5,13 @@ const SchemaU = mongoose.Schema
 const userSchema = new SchemaU({
   name: {
     type: String,
-    // required: true,
   },
   email: {
     type: String,
-    // required: true,
-    // unique: true,
+
   },
   password: {
     type: String,
-    // required: true,
   },
   dueDate: {
     type: Date,

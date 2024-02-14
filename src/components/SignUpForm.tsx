@@ -58,13 +58,9 @@ function SignUpForm() {
           console.log("result in register:>> ", result);
 
           setNewUser(result);
-          alert("Thank you for joining Lilu!");
-          await signIn("credentials", {
-            ...newUser,
-            redirect: false,
-          });
+          alert("Thank you for joining Lilu! Please log in :) ");
         }
-        // await router.push("../profiles");
+        await router.push("../login");
         // location.reload();
       } catch (error) {
         console.log("error in your /signup fetch:>> ", error);

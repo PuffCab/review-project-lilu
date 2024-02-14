@@ -1,12 +1,8 @@
-import Contact from "@/components/contact";
+import Contact from "../components/Contact";
 import { useSession } from "next-auth/react";
-import React from "react";
+import React, { useEffect } from "react";
 
 const ContactPage = () => {
-  const session = useSession();
-
-  console.log("session :>> ", session);
-
   return <Contact />;
 };
 

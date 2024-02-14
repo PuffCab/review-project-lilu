@@ -57,35 +57,6 @@ export const authOptions = {
         }
       },
 
-      // async authorize(credentials) {
-      //   const { email, password } = credentials;
-
-      //   const urlencoded = new URLSearchParams();
-      //   urlencoded.append("email", email);
-      //   urlencoded.append("password", password);
-
-      //   const requestOptions = {
-      //     method: "POST",
-      //     body: urlencoded,
-      //   };
-
-      //   const response = await fetch("api/login", requestOptions);
-
-      //   if (response.ok) {
-      //     const data = await response.json();
-      //     console.log(" data from nextAuth :>> ", data);
-      //     if (data.token) {
-      //       console.log("data.user :>> ", data.user);
-      //       return {
-      //         ...data,
-      //         email: email,
-      //         name: data.user._id,
-      //         user: data.user,
-      //       };
-      //     }
-      //   }
-      //   return null;
-      // },
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET,
@@ -110,28 +81,7 @@ export const authOptions = {
   
       cookies: cookies,
     },
-//     async signIn({ user, account, profile }) {
-//         const dbClient = await clientPromise;
-//         const db = dbClient.db("e-learning");
-//         const existingUser = await db.collection("users").findOne({ email: user.email });
-
-//       if (existingUser) {
-// await db.collection("users").updateOne(
-//     { email: user.email },
-//     { $set: { lastLogin: new Date() } } 
-// );
-// return true;
-// } else {
-// await db.collection("users").insertOne({
-//     name: user.name,
-//     email: user.email,
-//     image: user.image, 
-//     lastLogin: new Date(),
-// });
-// return true;
-// }
-//     }
-}
+  }
 
 
 const handler = NextAuth(authOptions);

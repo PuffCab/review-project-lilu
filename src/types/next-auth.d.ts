@@ -17,6 +17,8 @@ interface SessionUser {
     name?:string,
     email?: string,
     password?: string | null,
+    image?: string | null,
+
     // accessToken?:string
 }
 

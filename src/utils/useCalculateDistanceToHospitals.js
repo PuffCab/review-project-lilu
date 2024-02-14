@@ -9,8 +9,12 @@ function useCalculateDistanceToHospitals(coordinates1, coordinates2) {
   const [distance, setDistance] = useState(0);
   const [lat1, lon1] = coordinates1;
   const [lat2, lon2] = coordinates2;
+
   const isSameCoordinates =
     lat1 == lon1 && lat2 == lon2;
+
+  const isSameCoordinates = lat1 == lon1 && lat2 == lon2;
+
 
   const calculateDistance = () => {
     if (isSameCoordinates) {
@@ -48,6 +52,7 @@ function useCalculateDistanceToHospitals(coordinates1, coordinates2) {
         //nautical miles to KM
         pointsDistance = pointsDistance * 1.609344;
         console.log("pointsDistance :>> ", pointsDistance);
+
         setDistance(pointsDistance.toFixed(2))
         
       }
@@ -59,6 +64,16 @@ function useCalculateDistanceToHospitals(coordinates1, coordinates2) {
 useEffect(() => {
 calculateDistance()
 }, [coordinates1, coordinates2])
+
+
+        setDistance(pointsDistance.toFixed(2));
+      }
+    }
+  };
+
+  useEffect(() => {
+    calculateDistance();
+  }, [coordinates1, coordinates2]);
 
 
   return distance;

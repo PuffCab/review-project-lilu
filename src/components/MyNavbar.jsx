@@ -22,7 +22,6 @@ function MyNavbar() {
           <Link href="/">
             <Image src={logo} alt="logo" className="w-10 h-10 rounded-full" />
           </Link>
-
           <Link href="/" className="text-white hover:underline mr-4">
             Home
           </Link>

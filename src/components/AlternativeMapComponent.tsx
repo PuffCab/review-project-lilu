@@ -14,6 +14,7 @@ import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import { LatLngExpression } from "leaflet";
 import dotenv from "dotenv";
 import { useMapEvent } from "react-leaflet/hooks";
+import nearestHospitals from "@/pages/api/nearestHospitals";
 
 dotenv.config();
 
@@ -101,7 +102,13 @@ export default function AlternativeMap() {
       console.log("Location data not found in the API response.");
     }
   };
-
+  const fetchNearbyHospitals = async (latitude, longitude, radius) => {
+    const response = await fetch(
+      `/api/nearestHospitals?lat=${latitude}&lng=${longitude}&radius=${radius}`
+    );
+    const hospitals = await response.json();
+    // Use later on the fetched hospitals as needed in component
+  };
   //!converting address to location, using the same api as before called reverse geocoding
   const convertAddressToLocation = async () => {
     // const fullAddress = `${streetAddress}, ${postalCode} ${city}, ${country}`;
@@ -235,6 +242,12 @@ export default function AlternativeMap() {
                 className="flex-1 bg-green-500 text-white font-bold py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
               >
                 Use My current Location
+              </button>
+              <button
+                onClick={fetchNearbyHospitals}
+                className="flex-1 bg-green-500 text-white font-bold py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+              >
+                show nearest hospitals
               </button>
             </div>
           </div>

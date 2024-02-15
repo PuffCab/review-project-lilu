@@ -16,7 +16,7 @@ function SingleHospitalDistance({
   );
   return (
     <p className="text-center text-lg font-medium">
-      you are at {distance ? distance : "...calculating..."} Km.
+      you are at {distance ? distance : "...calculating...."} Km.
     </p>
   );
 }

@@ -6,7 +6,7 @@ const SingleHospitalMap = dynamic(
   () => import("@/components/SingleHospitalMap"),
   {
     loading: () => {
-      return <h1>...Loading Map...</h1>;
+      return <h1>...Loading Map....</h1>;
     },
     ssr: false,
   }

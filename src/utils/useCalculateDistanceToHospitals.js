@@ -9,9 +9,9 @@ function useCalculateDistanceToHospitals(
   userLocationCoords
 ) {
   console.log(
-    "hospitalLocationCoords",
+    "hospitalLocationCoords:",
     hospitalLocationCoords,
-    "userLocationCoords",
+    "userLocationCoords:",
     userLocationCoords
   );
   const [distance, setDistance] = useState(0);

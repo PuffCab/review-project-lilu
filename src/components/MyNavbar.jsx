@@ -1,18 +1,39 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "@/images/logo.jpg";
 import Image from "next/image";
+import { signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 function MyNavbar() {
+  const { data: session, status, update } = useSession();
+  console.log("session :>> ", session);
+
   const [menuOpen, setMenuOpen] = useState(false);
-  const isLoggedIn = false;
+  const [user, setUser] = useState(session?.user);
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (session?.user) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, [status]);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
-  const logout = () => {
-    //later I implement the logout-logic
+  const logout = async () => {
+    window.confirm("Are you sure you want to log out?");
+    await signOut({ redirect: false });
+    setUser(null);
+    await router.push("/");
+    location.reload();
   };
 
   return (
@@ -20,11 +41,18 @@ function MyNavbar() {
       <div className="flex items-center justify-between">
         <div className="flex items-center">
           <Link href="/">
-            <Image src={logo} alt="logo" className="w-10 h-10 rounded-full" />
+            <Image
+              src={logo}
+              alt="logo"
+              className="mr-2 w-10 h-10 rounded-full"
+            />
           </Link>
-          {/* <Link href="/" className="text-white hover:underline mr-4">
-            Home
-          </Link> */}
+          <Link href="/about" className="text-white hover:underline mr-4">
+            About
+          </Link>
+          <Link href="/contact" className="text-white hover:underline mr-3">
+            Contact
+          </Link>
         </div>
 
         {/* Hamburger menu */}
@@ -77,19 +105,32 @@ function MyNavbar() {
             Map
           </Link>
           {isLoggedIn ? (
-            <button
-              onClick={logout}
-              className="block text-white hover:underline my-2"
-            >
-              Logout
-            </button>
+            <>
+              <Link
+                href={`/profile/`}
+                className="mx-1 text-2xl text-white	 no-underline hover:font-semibold focus:font-semibold"
+              >
+                Profile
+              </Link>
+              <button
+                onClick={() => {
+                  logout();
+                }}
+                className="block text-white hover:underline my-2"
+              >
+                Logout
+              </button>
+            </>
           ) : (
-            <Link
-              href="/login"
-              className="block text-white hover:underline my-2"
-            >
-              Login
-            </Link>
+            <div>
+              <Link
+                href="/login"
+                className="block text-white hover:underline my-2"
+              >
+                Login
+              </Link>
+              <Link href="/signup">Signup</Link>
+            </div>
           )}
         </div>
       )}
@@ -105,15 +146,39 @@ function MyNavbar() {
         <Link href="/hospitals" className="text-white hover:underline mr-4">
           Hospitals
         </Link>
-        <Link href="/login" className="text-white hover:underline mr-3">
-          Login
-        </Link>
-        <Link href="/signup" className="text-white hover:underline mr-3">
-          Sign Up
-        </Link>
-        <Link href="/contact" className="text-white hover:underline mr-3">
-          Contact
-        </Link>
+        {isLoggedIn ? (
+          <>
+            <Link
+              href={`/profile/${session?.user?.image}`}
+              className="block text-white hover:underline mr-2 my-2"
+            >
+              Profile
+            </Link>
+            <button
+              onClick={() => {
+                logout();
+              }}
+              className="block text-white hover:underline my-2"
+            >
+              Logout
+            </button>
+          </>
+        ) : (
+          <div className="flex flex-row">
+            <Link
+              href="/login"
+              className="block text-white hover:underline mr-2 my-2"
+            >
+              Login
+            </Link>
+            <Link
+              className="block text-white hover:underline mr-2 my-2"
+              href="/signup"
+            >
+              Signup
+            </Link>
+          </div>
+        )}{" "}
       </div>
     </div>
   );

@@ -11,7 +11,6 @@ const AlternativeMap = dynamic(
 );
 
 export default function Home() {
-  // NOTE if you found an API, you could fetch here and get , let's say, an array of coordinates. To be passed as props to the component <AlternativeMap/> below
   return (
     <div>
       <AlternativeMap />

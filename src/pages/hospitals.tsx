@@ -11,9 +11,9 @@ function HospitalsPage() {
   const location1 = [52.51812040534005, 13.432188559032596];
   const location2 = [52.5094117367754, 13.520745861428354];
 
-  const distance = useCalculateDistanceToHospitals(location1, location2);
+  // const distance = useCalculateDistanceToHospitals(location1, location2);
 
-  console.log("distance final :>> ", distance);
+  // console.log("distance final :>> ", distance);
 
   return (
     <div>

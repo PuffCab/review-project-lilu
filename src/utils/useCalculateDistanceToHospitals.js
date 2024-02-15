@@ -4,23 +4,26 @@ import React, { useEffect, useState } from "react";
 //this the shape expected in coordinates1/2 is and array with a [latitudeNumber, longitudeNumber]
 
 // function useCalculateDistanceToHospitals(coord1, coord2) {
-function useCalculateDistanceToHospitals(coordinates1, coordinates2) {
-  console.log(coordinates1, coordinates2);
+function useCalculateDistanceToHospitals(
+  hospitalLocationCoords,
+  userLocationCoords
+) {
+  console.log(
+    "hospitalLocationCoords",
+    hospitalLocationCoords,
+    "userLocationCoords",
+    userLocationCoords
+  );
   const [distance, setDistance] = useState(0);
-  const [lat1, lon1] = coordinates1;
-  const [lat2, lon2] = coordinates2;
-
-  const isSameCoordinates =
-    lat1 == lon1 && lat2 == lon2;
+  const [lat1, lon1] = hospitalLocationCoords;
+  const [lat2, lon2] = userLocationCoords;
 
   const isSameCoordinates = lat1 == lon1 && lat2 == lon2;
-
 
   const calculateDistance = () => {
     if (isSameCoordinates) {
       //if both pair of coordinates has the same values, then there is no distance.
       setDistance(0);
-      console.log("aqi estamos");
       // distance = 0
     }
     if (!isSameCoordinates) {
@@ -39,10 +42,8 @@ function useCalculateDistanceToHospitals(coordinates1, coordinates2) {
 
       //making sure that distance value is not bigger than 1, since arc cosine expects a value withih range range [-1, 1].
       if (pointsDistance > 1) {
-        console.log("if 38");
         pointsDistance = 1;
       } else {
-        console.log("else 41");
         //calculating arc cosine
         pointsDistance = Math.acos(pointsDistance);
         //converting radians to degrees
@@ -51,20 +52,7 @@ function useCalculateDistanceToHospitals(coordinates1, coordinates2) {
         pointsDistance = pointsDistance * 60 * 1.1515;
         //nautical miles to KM
         pointsDistance = pointsDistance * 1.609344;
-        console.log("pointsDistance :>> ", pointsDistance);
-
-        setDistance(pointsDistance.toFixed(2))
-        
-      }
-    }
-  };
-
-
-
-useEffect(() => {
-calculateDistance()
-}, [coordinates1, coordinates2])
-
+        // console.log("pointsDistance :>> ", pointsDistance);
 
         setDistance(pointsDistance.toFixed(2));
       }
@@ -73,8 +61,7 @@ calculateDistance()
 
   useEffect(() => {
     calculateDistance();
-  }, [coordinates1, coordinates2]);
-
+  }, [hospitalLocationCoords, userLocationCoords]);
 
   return distance;
 }

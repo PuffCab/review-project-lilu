@@ -1,5 +1,6 @@
-import Contact from "@/components/contact";
-import React from "react";
+import Contact from "../components/Contact";
+import { useSession } from "next-auth/react";
+import React, { useEffect } from "react";
 
 const ContactPage = () => {
   return <Contact />;

@@ -21,15 +21,15 @@ const ProfilesPage = () => {
   }, []);
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 ">
       <h1 className="text-2xl font-semibold">Profiles</h1>
       <div>
         {profiles.map((profile) => (
           <div
-            key={profile._id}
+            key={profile.name}
             className="bg-white shadow overflow-hidden rounded-md p-4"
           >
-            <h2 className="text-lg font-bold text-red-400">{profile.name}</h2>
+            <h2 className="text-xl font-bold">{profile.name}</h2>
             <p>
               Email:{" "}
               <a

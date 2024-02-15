@@ -4,11 +4,12 @@ import { useEffect, useState } from "react";
 import BabyImage from "@/images/BabyImage.jpg";
 import Image from "next/image";
 import Script from "next/script";
+import { useSession } from "next-auth/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 function Home() {
-  console.log("process.env.MONGODB_URI :>> ", process.env.MONGODB_URI);
+  const session = useSession();
 
   return (
     <>

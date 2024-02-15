@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import logoSrc from "../images/IMG-0380 (1).jpg";
+import logo from "../images/IMG-0380 (1).jpg";
 
 const Contact = () => {
   return (
@@ -19,8 +19,8 @@ const Contact = () => {
           your pregnancy journey smoother together!
         </p>
         <div className="mb-6">
-          <img
-            src={logoSrc}
+          <Image
+            src={logo}
             alt="logo"
             className="rounded-lg"
             width="300"

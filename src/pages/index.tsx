@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import BabyImage from "@/images/BabyImage.jpg";
 import Image from "next/image";
 import Script from "next/script";
+import logo from "../images/logo.jpg";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,42 +31,52 @@ function Home() {
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
         crossOrigin=""
       />
+      <div className="bg-pink-100 p-4 flex justify-center items-center flex-col">
+        <div className="text-center flex items-center flex-col md:flex-row">
+          <Image
+            src={logo}
+            alt="LiLu Logo"
+            width={128}
+            height={128}
+            className="rounded-full object-cover"
+          />
+          <h1 className="text-2xl font-bold mt-4 md:mt-0 md:ml-4">
+            Welcome to LiLu, Your Digital Midwife
+          </h1>
+        </div>
 
-      <div className="bg-red-50 p-8">
-        <h1 className="text-3xl font-semibold mb-4 text-center">
-          LiLu - Your Virtual Midwife
-        </h1>
+        <div className="mt-4">
+          <Image
+            src={BabyImage}
+            alt="Baby Image"
+            width={700}
+            height={700}
+            className="m-auto rounded-full object-cover"
+          />
+        </div>
+        <p className="text-md mt-4 px-2">
+          LiLu supports your parenting journey with expert advice and resources.
+        </p>
 
-        <div className="bg-red-50 50 p-8">
-          <Image src={BabyImage} alt="My Image" className="rounded-full" />
-
-          <p className="text-lg">
-            Whether you're an expecting parent or a caregiver, LiLu is here to
-            support you on your journey. We're like your virtual midwife,
-            providing guidance and resources every step of the way.
-          </p>
-          <p className="text-lg mt-4">Here's what you can do with LiLu:</p>
-          <ul className="list-disc list-inside text-lg mt-2">
-            <li>
-              Find the nearest hospitals and midwives -{" "}
-              <a href="/map" className="text-blue-500 underline">
-                Explore Maps
-              </a>
-            </li>
-            <li>
-              Get your pregnancy questions answered by approved midwives -{" "}
-              <a href="/questions" className="text-blue-500 underline">
-                Ask Questions
-              </a>
-            </li>
-            <li>
-              Access best practice tips from our expert midwifery and doctors
-              team -{" "}
-              <a href="/tips" className="text-blue-500 underline">
-                Browse our Tips
-              </a>
-            </li>
-          </ul>
+        <div className="flex flex-col items-center mt-4 space-y-3">
+          <a
+            href="/alternativemap"
+            className="bg-blue-200 text-gray-800 font-semibold py-2 px-4 rounded-lg shadow hover:bg-blue-300 transition-colors duration-150"
+          >
+            Explore Maps
+          </a>
+          <a
+            href="/questions"
+            className="bg-yellow-200 text-gray-800 font-semibold py-2 px-4 rounded-lg shadow hover:bg-green-300 transition-colors duration-150"
+          >
+            Ask Questions
+          </a>
+          <a
+            href="/tips"
+            className="bg-purple-200 text-gray-800 font-semibold py-2 px-4 rounded-lg shadow hover:bg-purple-300 transition-colors duration-150"
+          >
+            Browse Tips
+          </a>
         </div>
       </div>
     </>

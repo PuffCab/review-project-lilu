@@ -193,7 +193,7 @@ export default function AlternativeMap() {
               name="streetName"
               value={address.streetName}
               onChange={handleAdressChange}
-              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full p-1.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
             <input
               type="text"
@@ -201,7 +201,7 @@ export default function AlternativeMap() {
               name="houseNumber"
               value={address.houseNumber}
               onChange={handleAdressChange}
-              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full p-1.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
             <input
               type="text"
@@ -209,7 +209,7 @@ export default function AlternativeMap() {
               name="postalCode"
               value={address.postalCode}
               onChange={handleAdressChange}
-              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full p-1.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
             <input
               type="text"
@@ -217,7 +217,7 @@ export default function AlternativeMap() {
               name="city"
               value={address.city}
               onChange={handleAdressChange}
-              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full p-1.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
             <input
               type="text"
@@ -225,29 +225,27 @@ export default function AlternativeMap() {
               name="country"
               value={address.country}
               onChange={handleAdressChange}
-              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full p-1.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
-            <div className="flex space-x-4">
+            <div className="flex items-center space-x-4">
               <button
                 onClick={convertAddressToLocation}
-                className="flex-1 bg-blue-500 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                className="flex-1 bg-blue-300 text-white font-semibold text-sm py-1 px-3 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
               >
                 Convert Address
               </button>
-              <br />
-              <br />
-              <p>or</p>
+              <p className="text-sm mx-2">or</p>
               <button
                 onClick={getLocationOnClick}
-                className="flex-1 bg-green-500 text-white font-bold py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+                className="flex-1 bg-blue-300 text-white font-semibold text-sm py-1 px-3 rounded-md hover:bg-blue-600 focus:outline-none"
               >
                 Use My current Location
               </button>
               <button
                 onClick={fetchNearbyHospitals}
-                className="flex-1 bg-green-500 text-white font-bold py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+                className="flex-1 bg-red-300 text-white font-semibold text-sm py-1 px-3 rounded-md hover:bg-red-500 focus:outline-none"
               >
-                show nearest hospitals
+                Show Nearest Hospitals
               </button>
             </div>
           </div>
@@ -306,8 +304,8 @@ export default function AlternativeMap() {
             </Marker>
           ))}
         </MapContainer>
-        <h2>create dropdowns and checkboxes for querying data </h2>
       </div>
+      <h2>create dropdowns and checkboxes for querying data </h2>
     </div>
   );
 }

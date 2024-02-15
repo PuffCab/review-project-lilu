@@ -25,9 +25,6 @@ function MyNavbar() {
           <Link href="/" className="text-white hover:underline mr-4">
             Home
           </Link>
-          <Link href="/about" className="text-white hover:underline mr-4">
-            About
-          </Link>
         </div>
 
         {/* Hamburger menu */}

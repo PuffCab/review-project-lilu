@@ -62,15 +62,6 @@ function ListOfHospitals() {
         </div>
       ))}
     </div>
-    // <div>
-    //   {hospitals.map((hospital) => (
-    //     <div key={hospital._id}>
-    //       <h2>{hospital.name}</h2>
-    //       <h3>{hospital.address}</h3>
-    //       <h4>{hospital.location}</h4>
-    //     </div>
-    //   ))}
-    // </div>
   );
 }
 

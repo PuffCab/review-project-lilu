@@ -11,12 +11,47 @@ import {
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
-import { LatLngExpression } from "leaflet";
+import { Coords, LatLngExpression } from "leaflet";
 import dotenv from "dotenv";
 import { useMapEvent } from "react-leaflet/hooks";
 import nearestHospitals from "@/pages/api/nearestHospitals";
+import DistanceToHospitals from "./DistanceToHospitals";
 
 dotenv.config();
+
+//!Types Created
+export interface Hospital {
+  address: Address;
+  birthsPerYear: number;
+  contact: Contact;
+  deliveryRooms: number;
+  location: Location;
+  name: string;
+  neonatalUnitAvailable: boolean;
+  onCallMidwife: boolean;
+  year: number;
+  _id: string;
+}
+
+export interface Address {
+  city: string;
+  district: string;
+  houseNumber: number;
+  postalCode: number;
+  streetName: string;
+}
+
+export interface Contact {
+  email: string;
+  tel: string;
+}
+
+export interface Location {
+  latitude: number;
+  longitude: number;
+}
+
+//! ///////
 
 type ChangeViewProps = {
   coords: LatLngExpression;
@@ -30,15 +65,15 @@ type AdressType = {
   latitude: number;
   longitude: number;
 };
-type Hospital = {
-  _id: string;
-  name: string;
-  address: string;
-  location: {
-    latitude: number;
-    longitude: number;
-  };
-};
+// type Hospital = {
+//   _id: string;
+//   name: string;
+//   address: string;
+//   location: {
+//     latitude: number;
+//     longitude: number;
+//   };
+// };
 // NOTE: what this component ChangeView does is receiving some coordinates as props (a single parameter, not an array),
 // and uses a hook from leaflet to set the Zoom (with the .setView() method, which does the same as the attribute Zoom={12} from the MapContainer)
 // level over the map. More info here: https://react-leaflet.js.org/docs/api-map/#hooks
@@ -58,7 +93,7 @@ export default function AlternativeMap() {
   const [latitude, setLatitude] = useState<number>(52.52);
   const [longitude, setLongitude] = useState<number>(13.505);
   const [locationData, setLocationData] = useState<any | null>(null);
-  const [hospitals, setHospitals] = useState([]);
+  const [hospitals, setHospitals] = useState<Hospital[]>([] as Hospital[]);
 
   const [address, setAddress] = useState<AdressType>({
     streetName: "",
@@ -66,6 +101,8 @@ export default function AlternativeMap() {
     city: "",
     country: "",
     postalCode: "",
+    latitude: 0,
+    longitude: 0,
   });
 
   // function to modify address state variable onchange of corresponding input
@@ -181,6 +218,14 @@ export default function AlternativeMap() {
 
   return (
     <div className="bg-red-50 p-8">
+      {/* <div className="bg-gray-50 min-h-screen flex items-center justify-center p-4">
+        <h1>Distance to Hospitals</h1>
+        <DistanceToHospitals
+          hospitals={hospitals}
+          userLatitude={latitude}
+          userLongitude={longitude}
+        />
+      </div> */}
       <div className="bg-gray-50 min-h-screen flex items-center justify-center p-4">
         <div className="bg-white shadow-md rounded-lg p-8 max-w-lg w-full">
           <h2 className="text-2xl font-bold text-gray-800 mb-6">
